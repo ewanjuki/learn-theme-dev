@@ -8,6 +8,7 @@
   <body class='bg-faded'>
     {%- section 'header' -%}
     {{ content_for_layout }}
+    {%- section 'footer' -%}
     {{- 'jquery-3.5.1.min.js' | asset_url | script_tag -}}
     {{- 'bootstrap.min.js' | asset_url | script_tag -}}
     {{- 'theme.js' | asset_url | script_tag -}}

@@ -14,43 +14,7 @@
       {% endif %}</h3>
     </div>
 
-    <div class="row">
-      {%- comment -%}
-      Display the product's images in a carousel format with sliding thumbnails at the bottom. If the product doesn't have any available images, a placeholder is display.
-      {%- endcomment -%}
-
-      <div class="col-md-5">
-        {%- if product.images.size > 0 -%}
-          <div id="product-image-carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-              {%- for image in product.images -%}
-                <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ image | product_img_url: '480*480', scale: 2, crop: 'center'}}" alt="{{ product.title | escape }}" class="d-block img-fluid">
-                </div>
-              {%- endfor -%}
-            </div>
-            <a href="#product-image-carousel" class="carousel-control-prev" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only"></span>
-            </a>
-            <a href="#product-image-carousel" class="carousel-control-next" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only"></span>
-            </a>
-          </div>
-          <div class="row d-none d-md-block">
-            {%- for image in product.images -%}
-              <div class="col-md-3 mt-3">
-                <a href="{{ image | product_img_url: 'master' }}" target="_blank" data-target="#product-image-carousel" data-slide-to="{{ forloop.index0 }}">
-                  <img src="{{ image | product_img_url: '240*240', scale: 2, crop: 'center'}}" alt="{{ product.title | escape }}" class="img-thumbnail">
-                </a>
-              </div>
-            {%- endfor -%}
-          </div>
-        {%- else -%}
-          {{ 'image' | placeholder_svg_tag: 'd-block img-fluid bg-light' }}    
-        {%- endif -%}
-      </div>
+    <div class="row">    
 
       {%- comment -%}
       Display product details (title, vendor, price and description) followed by an add to cart form
@@ -94,6 +58,43 @@
           {% endunless %}>Add to cart</button>
         </form>
 
+      </div>
+
+      {%- comment -%}
+      Display the product's images in a carousel format with sliding thumbnails at the bottom. If the product doesn't have any available images, a placeholder is display.
+      {%- endcomment -%}
+
+      <div class="col-md-5">
+        {%- if product.images.size > 0 -%}
+          <div id="product-image-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+              {%- for image in product.images -%}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ image | product_img_url: '480*480', scale: 2, crop: 'center'}}" alt="{{ product.title | escape }}" class="d-block img-fluid">
+                </div>
+              {%- endfor -%}
+            </div>
+            <a href="#product-image-carousel" class="carousel-control-prev" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only"></span>
+            </a>
+            <a href="#product-image-carousel" class="carousel-control-next" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only"></span>
+            </a>
+          </div>
+          <div class="row d-none d-md-block">
+            {%- for image in product.images -%}
+              <div class="col-md-3 mt-3">
+                <a href="{{ image | product_img_url: 'master' }}" target="_blank" data-target="#product-image-carousel" data-slide-to="{{ forloop.index0 }}">
+                  <img src="{{ image | product_img_url: '240*240', scale: 2, crop: 'center'}}" alt="{{ product.title | escape }}" class="img-thumbnail">
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'd-block img-fluid bg-light' }}    
+        {%- endif -%}
       </div>
     </div>
     <h3 class="mt-5">You may also like</h3>

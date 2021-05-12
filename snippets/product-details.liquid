@@ -1,0 +1,58 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a href="#description" class="nav-link active" aria-controls="description" role="tab" data-toggle="tab">
+          Description
+        </a>
+      </li>
+      {%- unless product.metafields.extra.garment_care == blank -%}
+        <li class="nav-item" role="presentation">
+          <a href="#garment-care" class="nav-link" aria-controls="garment-care" role="tab" data-toggle="tab">
+            <span class="d-none d-md-block">Garment</span> Care
+          </a>
+        </li>
+      {%- endunless -%}
+      <li class="nav-item" role="presentation">
+        <a href="#shipping" class="nav-link" aria-controls="shipping" role="tab" data-toggle="tab">
+          Shipping
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="tab-content">
+      <div class="tab-pane active" role="tabpanel" id="description">
+        {{ product.description }}
+      </div>
+      {%- unless product.metafields.extra.garment_care == blank -%}
+        <div class="tab-pane" role="tabpanel" id="garment-care">
+          {{ product.metafields.extra.garment_care }}
+        </div>
+      {%- endunless -%}
+      <div class="tab-pane" role="tabpanel" id="shipping">
+        <p>Orders placed before 4pm are shipped the same day.
+          The table below shows approximate shipping times using our standard shipping service.</p>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Eastern states           
+              </th>
+              <td>2-3 business days</td>
+            </tr>
+            <tr>
+              <th>Australia and New Zealand           
+              </th>
+              <td>3-4 business days</td>
+            </tr>
+            <tr>
+              <th>International           
+              </th>
+              <td>7-10 business days</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

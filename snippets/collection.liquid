@@ -1,0 +1,9 @@
+<div class="col-md-3 text-white" {{ block.shopify_attributes }}>
+  <a href="{{ collection.url }}" class="card card-inverse bg-dark">
+    {%- assign collection_image = collection.featured_image | default: collection.products.first.featured_image -%}
+    <img src="{{ collection_image | img_url: '200x200', scale: 2, crop: 'center' }}" alt="{{ collection.title | escape }}" class="card-image img-fluid">
+    <div class="card-img-overlay card-img-overlay-darken d-flex aligh-items-center justify-content-center">
+      <h4 class="card-title text-center">{{ collection.title | escape }}</h4>
+    </div>
+  </a>
+</div>

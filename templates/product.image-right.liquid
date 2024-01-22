@@ -23,7 +23,7 @@
         {%- comment -%}
         Product details on non mobile
         {%- endcomment -%}
-        <div class="d-none d-md-block">
+        <div class="d-none d-md-flex">
           <h1>{{ product.title | escape}}</h1>
           <h5 class="text-muted">{{ product.vendor | escape }}</h5>
           <h3>{% if product.price_varies %}
